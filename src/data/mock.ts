@@ -1,4 +1,4 @@
-import type { Show, Cast, Review, Theater } from '../types'
+import type { Show, Cast, Review, Theater, Run, Work } from '../types'
 
 export const THEATERS: Theater[] = [
   {
@@ -77,7 +77,7 @@ export const SHOWS: Show[] = [
   {
     id: 'lion-king', title: 'ライオンキング', titleEn: 'THE LION KING',
     genre: 'ミュージカル', theater: '四季劇場[秋]（東京）',
-    imageEmoji: '🦁', image: '/images/lion-king.jpg', officialUrl: 'https://www.shiki.jp/applause/lionking/', theaterId: 'ariake-aki', heroBg: 'bg-hero-lion', accentColor: '#F59E0B',
+    imageEmoji: '🦁', image: '/images/lion-king.jpg', officialUrl: 'https://www.shiki.jp/applause/lionking/', theaterId: 'ariake-aki', workId: 'w-lion-king', heroBg: 'bg-hero-lion', accentColor: '#F59E0B',
     synopsis: 'アフリカの大地を舞台に、若き王子シンバの成長と王座奪還を描く壮大なミュージカル。世界中で愛されるディズニーの傑作。ティム・ライスとエルトン・ジョンによる名曲が彩る。',
     castIds: ['c1','c2','c3','c4'], currentlyRunning: true, openDate: '2023-03-01',
     songs: ['サークル・オブ・ライフ','ハクナ・マタタ','愛を感じて'],
@@ -93,7 +93,7 @@ export const SHOWS: Show[] = [
   {
     id: 'cats', title: 'キャッツ', titleEn: 'CATS',
     genre: 'ミュージカル', theater: '四季劇場[春]（東京）',
-    imageEmoji: '🐱', image: '/images/cats.jpg', officialUrl: 'https://www.shiki.jp/applause/cats/', theaterId: 'ariake-haru', heroBg: 'bg-hero-cats', accentColor: '#10B981',
+    imageEmoji: '🐱', image: '/images/cats.jpg', officialUrl: 'https://www.shiki.jp/applause/cats/', theaterId: 'ariake-haru', workId: 'w-cats', heroBg: 'bg-hero-cats', accentColor: '#10B981',
     synopsis: 'T.S.エリオットの詩集をもとにした、猫たちの一夜の物語。「メモリー」など名曲ぞろいの不朽の名作。劇団四季の代表作として長年愛され続けている。',
     castIds: ['c8','c9','c10'], currentlyRunning: true, openDate: '1983-11-10',
     songs: ['メモリー','マキャヴィティ','ジェリクル・ソング'],
@@ -101,7 +101,7 @@ export const SHOWS: Show[] = [
   {
     id: 'phantom', title: 'オペラ座の怪人', titleEn: 'THE PHANTOM OF THE OPERA',
     genre: 'ミュージカル', theater: '四季劇場[春]（東京）',
-    imageEmoji: '🎭', image: '/images/phantom.jpg', officialUrl: 'https://www.shiki.jp/applause/operaza/', theaterId: 'ariake-haru', heroBg: 'bg-hero-phantom', accentColor: '#A78BFA',
+    imageEmoji: '🎭', image: '/images/phantom.jpg', officialUrl: 'https://www.shiki.jp/applause/operaza/', theaterId: 'ariake-haru', workId: 'w-phantom', heroBg: 'bg-hero-phantom', accentColor: '#A78BFA',
     synopsis: 'パリのオペラ座に潜む謎の怪人ファントムと、歌姫クリスティーヌの哀しき愛の物語。壮大な舞台装置とアンドリュー・ロイド・ウェバーの美しい音楽が魅力。',
     castIds: ['c11','c12'], currentlyRunning: false, openDate: '1988-03-16',
     songs: ['オペラ座の怪人','ミュージック・オブ・ザ・ナイト','オール・アイ・アスク・オブ・ユー'],
@@ -122,6 +122,131 @@ export const SHOWS: Show[] = [
     castIds: ['c6','c14'], currentlyRunning: true, openDate: '2013-07-12',
     songs: ['パート・オブ・ユア・ワールド','アンダー・ザ・シー','キス・ザ・ガール'],
   },
+
+  // --- アーカイブ（上演終了作品） ---
+  {
+    id: 'beauty-and-beast', title: '美女と野獣', titleEn: 'BEAUTY AND THE BEAST',
+    genre: 'ミュージカル', theater: '電通四季劇場[海]（東京）',
+    imageEmoji: '🌹', image: '/images/beauty-and-beast.jpg', officialUrl: 'https://www.shiki.jp/applause/beautyandthebeast/', theaterId: 'dentsu-umi', heroBg: 'bg-hero-beauty', accentColor: '#D97706',
+    synopsis: 'ディズニーの名作をミュージカル化。魔法で野獣の姿に変えられた王子と、心優しい娘ベルが織りなす愛の物語。豪華な衣装と美術、軽快な楽曲が魅力の不朽の名作。',
+    castIds: ['c15','c16'], currentlyRunning: false, openDate: '2017-04-01', closeDate: '2018-09-30',
+    songs: ['美女と野獣','ひとりぼっちの晩餐会','変わらぬ愛を'],
+  },
+  {
+    id: 'west-side-story', title: 'ウェストサイド物語', titleEn: 'WEST SIDE STORY',
+    genre: 'ミュージカル', theater: '四季劇場[秋]（東京）',
+    imageEmoji: '🌃', image: '/images/west-side-story.jpg', officialUrl: 'https://www.shiki.jp/applause/westsidestory/', theaterId: 'ariake-aki', heroBg: 'bg-hero-westside', accentColor: '#EF4444',
+    synopsis: 'シェイクスピアの「ロミオとジュリエット」を1950年代のニューヨークに置き換えた不朽の名作。対立する若者グループの中で芽生える悲劇の恋を描く。レナード・バーンスタインの音楽と情熱的なダンスが見どころ。',
+    castIds: ['c17','c18'], currentlyRunning: false, openDate: '2019-07-12', closeDate: '2021-03-28',
+    songs: ['トゥナイト','アメリカ','サムウェア'],
+  },
+  {
+    id: 'evita', title: 'エビータ', titleEn: 'EVITA',
+    genre: 'ミュージカル', theater: 'キャナルシティ劇場（福岡）',
+    imageEmoji: '🌹', image: '/images/evita.jpg', officialUrl: 'https://www.shiki.jp/applause/evita/', theaterId: 'canal-city', heroBg: 'bg-hero-evita', accentColor: '#F472B6',
+    synopsis: 'アルゼンチンのファーストレディ、エヴァ・ペロンの波乱に満ちた生涯を描いたミュージカル。「ドント・クライ・フォー・ミー・アルゼンチン」をはじめとする名曲とドラマチックな展開が見どころ。',
+    castIds: ['c19'], currentlyRunning: false, openDate: '2014-02-08', closeDate: '2015-05-31',
+    songs: ['ドント・クライ・フォー・ミー・アルゼンチン','闘うアルゼンチン','こんな日が来るとは'],
+  },
+  {
+    id: 'jesus-christ-superstar', title: 'ジーザス・クライスト=スーパースター', titleEn: 'JESUS CHRIST SUPERSTAR',
+    genre: 'ミュージカル', theater: '四季劇場[春]（東京）',
+    imageEmoji: '✝️', image: '/images/jesus-christ-superstar.jpg', officialUrl: 'https://www.shiki.jp/applause/jcs/', theaterId: 'ariake-haru', heroBg: 'bg-hero-jcs', accentColor: '#7C3AED',
+    synopsis: 'イエス・キリストの最後の7日間を、ロックミュージカルとして描いた問題作にして傑作。アンドリュー・ロイド・ウェバーの劇的な楽曲と、人間ドラマとしての深いテーマが胸を打つ。',
+    castIds: ['c20','c21'], currentlyRunning: false, openDate: '2020-01-17', closeDate: '2020-09-21',
+    songs: ['ゲッセマネ','スーパースター','イエスを十字架に'],
+  },
+  {
+    id: 'mamma-mia', title: 'マンマ・ミーア!', titleEn: 'MAMMA MIA!',
+    genre: 'ミュージカル', theater: '電通四季劇場[海]（東京）',
+    imageEmoji: '☀️', image: '/images/mamma-mia.jpg', officialUrl: 'https://www.shiki.jp/applause/mammamia/', theaterId: 'dentsu-umi', workId: 'w-mamma-mia', heroBg: 'bg-hero-mamma', accentColor: '#0EA5E9',
+    synopsis: 'ABBAの名曲に乗せて描かれる、ギリシャの島を舞台にした母娘の物語。結婚式を控えた娘が3人の「父親候補」をひそかに式へ招待したことから始まる、笑いと感動のハッピーミュージカル。',
+    castIds: ['c22','c23'], currentlyRunning: false, openDate: '2016-11-03', closeDate: '2018-02-25',
+    songs: ['ダンシング・クイーン','マンマ・ミーア','ザ・ウィナー・テイクス・イット・オール'],
+  },
+  {
+    id: 'ikoku-no-oka', title: '異国の丘', titleEn: 'IKOKU NO OKA',
+    genre: 'ミュージカル', theater: '北海道四季劇場（札幌）',
+    imageEmoji: '🌄', image: '/images/ikoku-no-oka.jpg', officialUrl: 'https://www.shiki.jp/applause/ikokunooka/', theaterId: 'hokkaido', heroBg: 'bg-hero-ikoku', accentColor: '#475569',
+    synopsis: '戦争に翻弄されながらも希望を捨てずに生きた若者たちの姿を描く、劇団四季のオリジナルミュージカル。重厚な人間ドラマと、心に染み入る楽曲が深い余韻を残す。',
+    castIds: ['c24'], currentlyRunning: false, openDate: '2012-08-01', closeDate: '2013-01-14',
+    songs: ['異国の丘','故郷を想う','明日への讃歌'],
+  },
+]
+
+// 原作ミュージカルそのもの（劇団四季版・ブロードウェイ版など、上演主体をまたいだ抽象的な「作品」エンティティ）
+// 海外での受賞歴・上演実績は要出典の事実情報のため、Web検索で調べた内容をもとに記載
+export const WORKS: Work[] = [
+  {
+    id: 'w-mamma-mia', title: 'マンマ・ミーア！', titleEn: 'MAMMA MIA!',
+    createdYear: '1999',
+    tonyAwards: [
+      { year: '2002', result: '作品賞など5部門ノミネート（受賞には至らず）' },
+    ],
+    overseasProductions: [
+      { region: 'ロンドン・ウエストエンド（プリンス・エドワード劇場）', period: '1999年初演、現在もロングラン中' },
+      { region: 'ブロードウェイ（ウィンターガーデン劇場ほか）', period: '2001年〜2015年、2025年に再演がスタート' },
+    ],
+  },
+  {
+    id: 'w-cats', title: 'キャッツ', titleEn: 'CATS',
+    createdYear: '1981',
+    tonyAwards: [
+      { year: '1983', result: '作品賞ほか7部門受賞（10部門ノミネート）' },
+    ],
+    overseasProductions: [
+      { region: 'ロンドン・ウエストエンド（ニュー・ロンドン劇場）', period: '1981年〜2002年、約21年・8,949回のロングラン' },
+      { region: 'ブロードウェイ', period: '1982年〜2000年、約18年・7,485回のロングラン' },
+      { region: '日本（劇団四季）', period: '1983年初演、日本初の本格的ロングラン上演作品に' },
+    ],
+  },
+  {
+    id: 'w-phantom', title: 'オペラ座の怪人', titleEn: 'THE PHANTOM OF THE OPERA',
+    createdYear: '1986',
+    tonyAwards: [
+      { year: '1988', result: '作品賞など7部門受賞（10部門ノミネート）' },
+    ],
+    overseasProductions: [
+      { region: 'ロンドン・ウエストエンド（ハー・マジェスティーズ劇場）', period: '1986年初演、現在もロングラン中' },
+      { region: 'ブロードウェイ（マジェスティック劇場）', period: '1988年〜2023年、ブロードウェイ史上最長のロングラン記録を樹立' },
+      { region: '世界27カ国・145都市以上', period: '世界での累計動員は1億3000万人を突破（2011年時点）' },
+    ],
+  },
+  {
+    id: 'w-lion-king', title: 'ライオンキング', titleEn: 'THE LION KING',
+    createdYear: '1997',
+    tonyAwards: [
+      { year: '1998', result: '作品賞・演出賞・振付賞など6部門受賞' },
+    ],
+    overseasProductions: [
+      { region: 'ブロードウェイ（ミンスコフ劇場）', period: '1997年初演、現在もロングラン中' },
+      { region: 'ロンドン・ウエストエンド（ライシアム劇場）', period: '1999年初演、現在もロングラン中' },
+      { region: '世界20カ国・100都市以上', period: '世界での累計動員は1億人を突破' },
+    ],
+  },
+]
+
+// 公演×劇場の上演履歴（同じ作品が時期によって異なる劇場で上演される多対多関係を表現）
+export const RUNS: Run[] = [
+  // ライオンキング
+  { id: 'r1', showId: 'lion-king', theaterId: 'ariake-aki', periodStart: '2023-03-01', note: '東京公演（有明・秋）' },
+  { id: 'r2', showId: 'lion-king', theaterId: 'canal-city', periodStart: '2018-11-01', periodEnd: '2019-03-31', note: '福岡公演' },
+  { id: 'r3', showId: 'lion-king', theaterId: 'hokkaido', periodStart: '2016-04-01', periodEnd: '2016-09-30', note: '札幌公演' },
+
+  // キャッツ
+  { id: 'r4', showId: 'cats', theaterId: 'ariake-haru', periodStart: '2021-04-01', note: '東京公演（有明・春）' },
+  { id: 'r5', showId: 'cats', theaterId: 'dentsu-umi', periodStart: '2017-10-01', periodEnd: '2018-03-31', note: '汐留公演' },
+  { id: 'r6', showId: 'cats', theaterId: 'hokkaido', periodStart: '2015-06-01', periodEnd: '2015-09-30', note: '札幌公演' },
+
+  // ノートルダムの鐘
+  { id: 'r7', showId: 'notre-dame', theaterId: 'hokkaido', periodStart: '2016-09-08', note: '札幌ロングラン公演' },
+  { id: 'r8', showId: 'notre-dame', theaterId: 'ariake-aki', periodStart: '2014-04-01', periodEnd: '2014-09-30', note: '初演（東京・有明秋）' },
+  { id: 'r9', showId: 'notre-dame', theaterId: 'dentsu-umi', periodStart: '2019-05-01', periodEnd: '2019-10-31', note: '汐留公演' },
+
+  // リトルマーメイド
+  { id: 'r10', showId: 'mermaid', theaterId: 'canal-city', periodStart: '2013-07-12', note: '福岡ロングラン公演' },
+  { id: 'r11', showId: 'mermaid', theaterId: 'ariake-haru', periodStart: '2011-04-01', periodEnd: '2011-12-25', note: '初演（東京・有明春）' },
+  { id: 'r12', showId: 'mermaid', theaterId: 'dentsu-umi', periodStart: '2015-09-01', periodEnd: '2016-02-28', note: '汐留公演' },
 ]
 
 export const CASTS: Cast[] = [
@@ -169,6 +294,38 @@ export const CASTS: Cast[] = [
   { id:'c14', name:'田中 彩子',    nameKana:'たなか あやこ',          roles:[
     {showId:'mermaid',     roleName:'アリエル',         periodStart:'2021-03-01', periodEnd:'2022-11-30'},
   ]},
+
+  // --- アーカイブ作品のキャスト ---
+  { id:'c15', name:'阿部 隼人',    nameKana:'あべ はやと',            roles:[
+    {showId:'beauty-and-beast', roleName:'野獣',        periodStart:'2017-04-01', periodEnd:'2018-09-30'},
+  ]},
+  { id:'c16', name:'村井 早紀',    nameKana:'むらい さき',            roles:[
+    {showId:'beauty-and-beast', roleName:'ベル',        periodStart:'2017-04-01', periodEnd:'2018-09-30'},
+  ]},
+  { id:'c17', name:'中村 蓮',      nameKana:'なかむら れん',          roles:[
+    {showId:'west-side-story',  roleName:'トニー',      periodStart:'2019-07-12', periodEnd:'2021-03-28'},
+  ]},
+  { id:'c18', name:'小野寺 楓',    nameKana:'おのでら かえで',        roles:[
+    {showId:'west-side-story',  roleName:'マリア',      periodStart:'2019-07-12', periodEnd:'2021-03-28'},
+  ]},
+  { id:'c19', name:'高梨 由美子',  nameKana:'たかなし ゆみこ',        roles:[
+    {showId:'evita',            roleName:'エヴァ・ペロン', periodStart:'2014-02-08', periodEnd:'2015-05-31'},
+  ]},
+  { id:'c20', name:'久保田 蒼',    nameKana:'くぼた あおい',          roles:[
+    {showId:'jesus-christ-superstar', roleName:'イエス', periodStart:'2020-01-17', periodEnd:'2020-09-21'},
+  ]},
+  { id:'c21', name:'黒木 駿',      nameKana:'くろき しゅん',          roles:[
+    {showId:'jesus-christ-superstar', roleName:'ユダ',   periodStart:'2020-01-17', periodEnd:'2020-09-21'},
+  ]},
+  { id:'c22', name:'藤堂 真紀',    nameKana:'とうどう まき',          roles:[
+    {showId:'mamma-mia',        roleName:'ドナ',        periodStart:'2016-11-03', periodEnd:'2018-02-25'},
+  ]},
+  { id:'c23', name:'早川 ひかる',  nameKana:'はやかわ ひかる',        roles:[
+    {showId:'mamma-mia',        roleName:'ソフィ',      periodStart:'2016-11-03', periodEnd:'2018-02-25'},
+  ]},
+  { id:'c24', name:'桐生 大和',    nameKana:'きりゅう やまと',        roles:[
+    {showId:'ikoku-no-oka',     roleName:'拓郎',        periodStart:'2012-08-01', periodEnd:'2013-01-14'},
+  ]},
 ]
 
 export const INITIAL_REVIEWS: Review[] = [
@@ -178,10 +335,7 @@ export const INITIAL_REVIEWS: Review[] = [
     title:'何度見ても圧倒される！', likeCount:24,
     body:'10回以上見ていますが、毎回感動します。特に「サークルオブライフ」の開幕は鳥肌もの。今回は2階席から見ましたが、全体が見渡せてまた違う感動がありました。芝さんのムファサは貫禄が増して最高でした！舞台装置の精巧さも毎回新しい発見があって飽きません。',
     seat:'2階B列23番', isFavorite:true,
-    castRatings:[
-      {castId:'c1', rating:5, comment:'声量・存在感ともに圧巻！登場シーンだけで泣けます'},
-      {castId:'c3', rating:5, comment:'ナラの凛とした美しさが素晴らしかった'},
-    ],
+    favoriteCastIds:['c1', 'c3'],
   },
   {
     id:'r2', showId:'lion-king', userId:'u3', userName:'劇場通いK', userInitial:'K', userColor:'#3B82F6',
@@ -189,7 +343,7 @@ export const INITIAL_REVIEWS: Review[] = [
     title:'スカーのキャラが今回は特に際立っていた', likeCount:11,
     body:'山口さんのスカーは毎回趣が異なりますが、今回は特に嫌らしさが際立っていて最高でした。若干テンポが早く感じたシーンもありましたが、全体的に大満足。次は1階前方で観たいです。',
     seat:'1階P列5番', isFavorite:false,
-    castRatings:[{castId:'c2', rating:5, comment:'絶妙な悪役ぶり、最高の存在感'}],
+    favoriteCastIds:['c2'],
   },
   {
     id:'r3', showId:'lion-king', userId:'u4', userName:'さくら', userInitial:'さ', userColor:'#EC4899',
@@ -197,7 +351,7 @@ export const INITIAL_REVIEWS: Review[] = [
     title:'子供と初めて観劇、大正解でした', likeCount:18,
     body:'8歳の娘と初めて劇団四季を観に行きました。心配していましたが、最初から最後まで釘付けでした。終わった後「もう一回見たい！」と言ってくれて嬉しかった。親子で泣けて笑える素晴らしい舞台です。',
     seat:'1階K列8番', isFavorite:false,
-    castRatings:[{castId:'c4', rating:5, comment:'ラフィキのシーンが特に印象的でした！'}],
+    favoriteCastIds:['c4'],
   },
   {
     id:'r4', showId:'aladdin', userId:'u2', userName:'みゅー', userInitial:'み', userColor:'#E8192C',
@@ -205,10 +359,7 @@ export const INITIAL_REVIEWS: Review[] = [
     title:'ジーニーが神がかっていた！', likeCount:31,
     body:'神田さんのジーニーは本当に笑いが止まらない！即興のようなアドリブも多く、客席全体が笑いに包まれました。フレンドライクミーのナンバーは圧巻のパフォーマンス。衣装も豪華で目が足りない！終わったあとも余韻が続く最高の作品でした。',
     seat:'1階G列12番', isFavorite:true,
-    castRatings:[
-      {castId:'c6', rating:5, comment:'アドリブ満載で腹筋崩壊。神田ジーニーは唯一無二！'},
-      {castId:'c5', rating:4, comment:'歌が安定してきた、今後が楽しみ'},
-    ],
+    favoriteCastIds:['c6', 'c5'],
   },
   {
     id:'r5', showId:'aladdin', userId:'u5', userName:'takaoh', userInitial:'T', userColor:'#8B5CF6',
@@ -216,7 +367,7 @@ export const INITIAL_REVIEWS: Review[] = [
     title:'舞台美術が圧倒的すぎる', likeCount:9,
     body:'アラジンの世界観を完璧に表現した舞台美術には言葉を失いました。特にアグラバーの市場シーンの奥行きと賑やかさ。ジャスミンの衣装も美しくて目が離せませんでした。また観に行きたい。',
     seat:'1階Q列22番', isFavorite:false,
-    castRatings:[{castId:'c7', rating:5, comment:'ジャスミンの凛とした美しさと歌声が最高'}],
+    favoriteCastIds:['c7'],
   },
   {
     id:'r6', showId:'cats', userId:'u3', userName:'劇場通いK', userInitial:'K', userColor:'#3B82F6',
@@ -224,7 +375,7 @@ export const INITIAL_REVIEWS: Review[] = [
     title:'メモリーで号泣', likeCount:27,
     body:'谷口さんのグリザベラは本当に圧巻。「メモリー」は何度聞いても泣きます。今回は割と前の席だったので、俳優さんの表情まで細かく見れて大満足でした。四季のキャッツは何年経っても色褪せない。劇場の没入感もたまりません。',
     seat:'1階C列8番', isFavorite:false,
-    castRatings:[{castId:'c8', rating:5, comment:'グリザベラの孤独と希望が伝わってくる名演'}],
+    favoriteCastIds:['c8'],
   },
   {
     id:'r7', showId:'cats', userId:'u6', userName:'nemu', userInitial:'ね', userColor:'#10B981',
@@ -232,7 +383,7 @@ export const INITIAL_REVIEWS: Review[] = [
     title:'猫になって踊りたくなる！', likeCount:15,
     body:'開演から終演まで、ずっと猫の世界に引き込まれっぱなしでした。俳優さん全員の身体能力が素晴らしく、人間とは思えない動き。特にマンカストラップのシーンはかっこよすぎて声が出ました。',
     seat:'2階E列14番', isFavorite:false,
-    castRatings:[{castId:'c9', rating:5, comment:'リーダーとしての存在感が圧倒的'}],
+    favoriteCastIds:['c9'],
   },
   {
     id:'r8', showId:'notre-dame', userId:'u2', userName:'みゅー', userInitial:'み', userColor:'#E8192C',
@@ -240,10 +391,7 @@ export const INITIAL_REVIEWS: Review[] = [
     title:'衝撃の完成度。四季の新境地', likeCount:42,
     body:'「ノートルダムの鐘」は今まで見た四季の中で最高傑作かもしれない。テーマが重くて賛否あると思いますが、その深さが四季らしくない（いい意味で）。合唱の迫力は生で聞くと震えます。飯田さんのカジモドは純粋さと悲しさが同居していて最高でした。終演後に立ち上がれなかった。',
     seat:'1階F列15番', isFavorite:true,
-    castRatings:[
-      {castId:'c13', rating:5, comment:'カジモドの純粋さに胸が痛い。素晴らしい'},
-      {castId:'c1',  rating:5, comment:'フローロー役も完璧。声の使い方が違う'},
-    ],
+    favoriteCastIds:['c13', 'c1'],
   },
   {
     id:'r9', showId:'mermaid', userId:'u5', userName:'takaoh', userInitial:'T', userColor:'#8B5CF6',
@@ -251,7 +399,7 @@ export const INITIAL_REVIEWS: Review[] = [
     title:'水中表現に度肝を抜かれた', likeCount:20,
     body:'アリエルが泳ぐシーンの舞台技術は本当に驚異的。俳優さんたちが本当に海中を漂っているように見えて、思わず息を止めてしまいました。田中さんのアリエルは声も演技も完璧で最高の体験でした。',
     seat:'1階H列3番', isFavorite:false,
-    castRatings:[{castId:'c14', rating:5, comment:'アリエルの無邪気さと切なさのバランスが絶妙'}],
+    favoriteCastIds:['c14'],
   },
   {
     id:'r10', showId:'phantom', userId:'u4', userName:'さくら', userInitial:'さ', userColor:'#EC4899',
@@ -259,10 +407,7 @@ export const INITIAL_REVIEWS: Review[] = [
     title:'生涯最高の体験と言っても過言ではない', likeCount:55,
     body:'初めてオペラ座の怪人を観ました。圧倒されすぎて観劇後しばらく何もできませんでした。「ミュージック・オブ・ザ・ナイト」をライブで聴く体験は言葉にならない。村俊さんのファントムは美しくて悲しくて、ずっと心に残っています。これは絶対に生で観るべき。',
     seat:'1階D列10番', isFavorite:true,
-    castRatings:[
-      {castId:'c11', rating:5, comment:'あの声はもはや人間業を超えている'},
-      {castId:'c12', rating:5, comment:'クリスティーヌの揺れ動く心が完璧に表現されていた'},
-    ],
+    favoriteCastIds:['c11', 'c12'],
   },
 ]
 

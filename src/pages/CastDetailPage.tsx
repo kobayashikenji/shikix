@@ -1,8 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import { ArrowLeft, CalendarDays, Clock } from 'lucide-react'
+import { ArrowLeft, CalendarDays, Clock, Heart } from 'lucide-react'
 import { CASTS, SHOWS } from '../data/mock'
 import { useReviews } from '../hooks/useReviews'
-import { StarRating } from '../components/StarRating'
 import { ReviewCard } from '../components/ReviewCard'
 
 function formatPeriod(start: string, end?: string): string {
@@ -13,7 +12,7 @@ function formatPeriod(start: string, end?: string): string {
   return end ? `${fmt(start)} 〜 ${fmt(end)}` : `${fmt(start)} 〜 現在`
 }
 
-function isRecent(start: string, end?: string): boolean {
+function isRecent(_start: string, end?: string): boolean {
   const now = new Date('2026-06-01')
   const endDate = end ? new Date(end) : now
   const monthsAgo = (now.getTime() - endDate.getTime()) / (1000 * 60 * 60 * 24 * 30)
@@ -28,14 +27,7 @@ export function CastDetailPage() {
   const cast = CASTS.find(c => c.id === id)
   if (!cast) return <div className="text-center py-20 text-gray-400">キャストが見つかりません</div>
 
-  const allCastRatings = reviews.flatMap(r =>
-    r.castRatings.filter(cr => cr.castId === cast.id).map(cr => ({ ...cr, review: r }))
-  )
-  const avg = allCastRatings.length
-    ? allCastRatings.reduce((s, cr) => s + cr.rating, 0) / allCastRatings.length
-    : 0
-
-  const reviewsWithCast = reviews.filter(r => r.castRatings.some(cr => cr.castId === cast.id))
+  const reviewsWithCast = reviews.filter(r => r.favoriteCastIds.includes(cast.id))
 
   // 直近の出演作品：periodStartの降順でソート
   const sortedRoles = [...cast.roles].sort(
@@ -60,11 +52,11 @@ export function CastDetailPage() {
           <div>
             <h2 className="text-xl font-black text-gray-900">{cast.name}</h2>
             <p className="text-sm text-gray-400">{cast.nameKana}</p>
-            {avg > 0 && (
-              <div className="flex items-center gap-2 mt-1">
-                <StarRating value={avg} size={16} />
-                <span className="text-amber-500 font-bold">{avg.toFixed(1)}</span>
-                <span className="text-xs text-gray-400">（{allCastRatings.length}件）</span>
+            {reviewsWithCast.length > 0 && (
+              <div className="flex items-center gap-1.5 mt-1 text-rose-500">
+                <Heart size={16} className="fill-rose-500" />
+                <span className="font-bold">{reviewsWithCast.length}件</span>
+                <span className="text-xs text-gray-400">のお気に入り登録</span>
               </div>
             )}
           </div>

@@ -1,22 +1,16 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Search } from 'lucide-react'
+import { Search, Heart } from 'lucide-react'
 import { CASTS, SHOWS } from '../data/mock'
 import { useReviews } from '../hooks/useReviews'
-import { StarRating } from '../components/StarRating'
 
 export function CastsPage() {
   const nav = useNavigate()
   const { reviews } = useReviews()
   const [query, setQuery] = useState('')
 
-  const castAvg = (castId: string) => {
-    const ratings = reviews.flatMap(r => r.castRatings.filter(cr => cr.castId === castId))
-    if (!ratings.length) return 0
-    return ratings.reduce((s, cr) => s + cr.rating, 0) / ratings.length
-  }
-  const castReviewCount = (castId: string) =>
-    reviews.filter(r => r.castRatings.some(cr => cr.castId === castId)).length
+  const castFavoriteCount = (castId: string) =>
+    reviews.filter(r => r.favoriteCastIds.includes(castId)).length
 
   const filtered = CASTS.filter(c => {
     const q = query.toLowerCase()
@@ -38,21 +32,20 @@ export function CastsPage() {
 
       <div className="grid grid-cols-2 gap-3">
         {filtered.map(cast => {
-          const avg = castAvg(cast.id)
-          const cnt = castReviewCount(cast.id)
+          const favCount = castFavoriteCount(cast.id)
           return (
             <button key={cast.id} onClick={() => nav(`/casts/${cast.id}`)}
               className="card text-left hover:shadow-md transition-all hover:scale-[1.02] active:scale-[0.98]">
               <div className="text-4xl mb-2 text-center">🎭</div>
               <p className="font-bold text-sm text-center text-gray-900">{cast.name}</p>
               <p className="text-[10px] text-gray-400 text-center mb-2">{cast.nameKana}</p>
-              {avg > 0 ? (
-                <div className="flex flex-col items-center gap-1">
-                  <StarRating value={avg} size={12} />
-                  <p className="text-xs text-gray-400">{cnt}件の評価</p>
+              {favCount > 0 ? (
+                <div className="flex items-center justify-center gap-1 text-rose-500">
+                  <Heart size={12} className="fill-rose-500" />
+                  <p className="text-xs font-bold">{favCount}件のお気に入り</p>
                 </div>
               ) : (
-                <p className="text-xs text-gray-400 text-center">評価なし</p>
+                <p className="text-xs text-gray-400 text-center">お気に入り登録なし</p>
               )}
               <div className="mt-2 space-y-0.5">
                 {cast.roles.map(r => {

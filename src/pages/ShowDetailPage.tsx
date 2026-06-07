@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import { ArrowLeft, MapPin, Pencil, Star, Users, ExternalLink, Ticket } from 'lucide-react'
-import { SHOWS, CASTS } from '../data/mock'
+import { ArrowLeft, MapPin, Pencil, Star, Users, ExternalLink, Ticket, History, Globe, Award, Heart } from 'lucide-react'
+import { SHOWS, CASTS, RUNS, THEATERS, WORKS } from '../data/mock'
+import { piaUrl, ltikeUrl, eplusUrl } from '../config/affiliate'
 import { useReviews } from '../hooks/useReviews'
 import { ReviewCard } from '../components/ReviewCard'
 import { StarRating } from '../components/StarRating'
@@ -16,12 +17,17 @@ export function ShowDetailPage() {
   const reviews = getByShow(show.id)
   const avg = avgRating(show.id)
   const casts = show.castIds.map(cid => CASTS.find(c => c.id === cid)).filter(Boolean) as typeof CASTS
+  const work = show.workId ? WORKS.find(w => w.id === show.workId) : undefined
 
-  const castAvg = (castId: string) => {
-    const ratings = reviews.flatMap(r => r.castRatings.filter(cr => cr.castId === castId))
-    if (!ratings.length) return 0
-    return ratings.reduce((s, cr) => s + cr.rating, 0) / ratings.length
-  }
+  // この作品の上演劇場の歴史（公演×劇場の多対多関係をRUNSから集計）
+  const runHistory = RUNS
+    .filter(r => r.showId === show.id)
+    .map(r => ({ run: r, theater: THEATERS.find(t => t.id === r.theaterId) }))
+    .filter((x): x is { run: typeof RUNS[number]; theater: NonNullable<typeof x.theater> } => !!x.theater)
+    .sort((a, b) => b.run.periodStart.localeCompare(a.run.periodStart))
+
+  const favoriteCount = (castId: string) =>
+    reviews.filter(r => r.favoriteCastIds.includes(castId)).length
 
   return (
     <div className="space-y-5">
@@ -105,7 +111,7 @@ export function ShowDetailPage() {
           <div className="flex gap-2 overflow-x-auto pb-1">
             {casts.map(cast => {
               const role = cast.roles.find(r => r.showId === show.id)
-              const avg = castAvg(cast.id)
+              const favCount = favoriteCount(cast.id)
               return (
                 <button
                   key={cast.id}
@@ -116,14 +122,96 @@ export function ShowDetailPage() {
                   <div className="text-2xl mb-1">🎭</div>
                   <p className="font-bold text-xs leading-tight text-gray-900">{cast.name}</p>
                   <p className="text-[10px] text-shiki-accent mt-0.5">{role?.roleName}</p>
-                  {avg > 0 && (
-                    <div className="flex justify-center mt-1">
-                      <StarRating value={avg} size={10} />
+                  {favCount > 0 && (
+                    <div className="flex items-center justify-center gap-0.5 mt-1 text-[10px] text-rose-400">
+                      <Heart size={10} className="fill-rose-400" />
+                      {favCount}
                     </div>
                   )}
                 </button>
               )
             })}
+          </div>
+        </section>
+      )}
+
+      {/* 世界のこの作品（原作ミュージカルの受賞歴・海外公演実績） */}
+      {work && (
+        <section>
+          <h3 className="font-bold text-sm text-gray-500 mb-2 flex items-center gap-1">
+            <Globe size={14} /> 世界のこの作品
+          </h3>
+          <div className="card space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="text-xs text-gray-400">初演</div>
+              <div className="font-bold text-sm text-gray-900">{work.createdYear}年（{work.titleEn}）</div>
+            </div>
+
+            {work.tonyAwards && work.tonyAwards.length > 0 && (
+              <div>
+                <p className="text-xs font-bold text-gray-500 mb-1.5 flex items-center gap-1">
+                  <Award size={12} className="text-amber-500" /> トニー賞
+                </p>
+                <ul className="space-y-1">
+                  {work.tonyAwards.map((t, i) => (
+                    <li key={i} className="text-xs text-gray-600 flex gap-2">
+                      <span className="text-gray-400 flex-shrink-0">{t.year}年</span>
+                      <span>{t.result}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {work.overseasProductions && work.overseasProductions.length > 0 && (
+              <div>
+                <p className="text-xs font-bold text-gray-500 mb-1.5 flex items-center gap-1">
+                  <Globe size={12} className="text-shiki-accent" /> 海外公演実績
+                </p>
+                <ul className="space-y-1.5">
+                  {work.overseasProductions.map((o, i) => (
+                    <li key={i} className="text-xs text-gray-600">
+                      <span className="font-medium text-gray-800">{o.region}</span>
+                      <span className="text-gray-400 ml-2">{o.period}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            <p className="text-[10px] text-gray-400 leading-relaxed pt-1 border-t border-gray-100">
+              ※ 受賞歴・海外公演実績は原作ミュージカルとしての記録です。劇団四季版の上演内容と異なる場合があります。
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* 上演劇場の歴史 */}
+      {runHistory.length > 0 && (
+        <section>
+          <h3 className="font-bold text-sm text-gray-500 mb-2 flex items-center gap-1">
+            <History size={14} /> 上演ヒストリー
+          </h3>
+          <div className="card p-0 divide-y divide-gray-100">
+            {runHistory.map(({ run, theater }) => (
+              <button
+                key={run.id}
+                onClick={() => nav(`/theaters/${theater.id}`)}
+                className="w-full flex items-center gap-3 p-3 text-left hover:bg-gray-50 transition-colors"
+              >
+                <div className="w-2 h-2 rounded-full flex-shrink-0"
+                     style={{ background: run.periodEnd ? '#d1d5db' : '#00a07e' }} />
+                <div className="flex-1 min-w-0">
+                  <p className="font-bold text-sm text-gray-900">{theater.name}</p>
+                  <p className="text-xs text-gray-400">
+                    {run.periodStart} 〜 {run.periodEnd ?? '上演中'}
+                    {run.note && <span className="ml-1">（{run.note}）</span>}
+                  </p>
+                </div>
+                <span className={`badge text-[10px] flex-shrink-0 ${run.periodEnd ? 'bg-gray-100 text-gray-500' : 'bg-green-50 text-green-700'}`}>
+                  {run.periodEnd ? '終了' : '上演中'}
+                </span>
+              </button>
+            ))}
           </div>
         </section>
       )}
@@ -141,8 +229,7 @@ export function ShowDetailPage() {
             </p>
             {/* ぴあ */}
             <a
-              href={`https://ticket.pia.jp/pia/event/search?searchWord=${encodeURIComponent('劇団四季 ' + show.title)}`
-                /* アフィリエイトパラメータ: &af=YOUR_PIA_AFFILIATE_ID */}
+              href={piaUrl(show.title)}
               target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:bg-gray-50 active:scale-[0.99] transition-all"
             >
@@ -161,8 +248,7 @@ export function ShowDetailPage() {
             </a>
             {/* ローチケ */}
             <a
-              href={`https://l-tike.com/search/?keyword=${encodeURIComponent('劇団四季 ' + show.title)}`
-                /* アフィリエイトパラメータ: &af=YOUR_LTIKE_AFFILIATE_ID */}
+              href={ltikeUrl(show.title)}
               target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:bg-gray-50 active:scale-[0.99] transition-all"
             >
@@ -181,8 +267,7 @@ export function ShowDetailPage() {
             </a>
             {/* e+ */}
             <a
-              href={`https://eplus.jp/sf/word/?key=${encodeURIComponent('劇団四季 ' + show.title)}`
-                /* アフィリエイトパラメータ: &af=YOUR_EPLUS_AFFILIATE_ID */}
+              href={eplusUrl(show.title)}
               target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:bg-gray-50 active:scale-[0.99] transition-all"
             >

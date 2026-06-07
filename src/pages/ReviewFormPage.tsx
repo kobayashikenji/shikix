@@ -1,50 +1,81 @@
 import { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { ArrowLeft, Send } from 'lucide-react'
+import { ArrowLeft, Send, Loader2, LogIn, Heart } from 'lucide-react'
 import { SHOWS, CASTS } from '../data/mock'
 import { useReviews } from '../hooks/useReviews'
+import { useAuth } from '../hooks/useAuth'
 import { StarRating } from '../components/StarRating'
-import type { Review } from '../types'
 
 export function ReviewFormPage() {
   const { id } = useParams<{ id: string }>()
   const nav = useNavigate()
   const { addReview } = useReviews()
+  const { isLoggedIn } = useAuth()
 
   const show = SHOWS.find(s => s.id === id)
-  if (!show) return null
-
-  const casts = show.castIds.map(cid => CASTS.find(c => c.id === cid)).filter(Boolean) as typeof CASTS
+  const casts = show ? (show.castIds.map(cid => CASTS.find(c => c.id === cid)).filter(Boolean) as typeof CASTS) : []
 
   const [rating, setRating] = useState(0)
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10))
   const [seat, setSeat] = useState('')
-  const [castRatings, setCastRatings] = useState<{ castId: string; rating: number; comment: string }[]>(
-    casts.map(c => ({ castId: c.id, rating: 0, comment: '' }))
-  )
+  const [favoriteCastIds, setFavoriteCastIds] = useState<string[]>([])
 
-  const updateCastRating = (castId: string, field: 'rating' | 'comment', value: string | number) => {
-    setCastRatings(prev => prev.map(cr => cr.castId === castId ? { ...cr, [field]: value } : cr))
+  const toggleFavoriteCast = (castId: string) => {
+    setFavoriteCastIds(prev => prev.includes(castId) ? prev.filter(id => id !== castId) : [...prev, castId])
   }
 
+  const [submitting, setSubmitting] = useState(false)
   const canSubmit = rating > 0 && title.trim() && body.trim()
 
-  const handleSubmit = () => {
-    if (!canSubmit) return
-    const review: Review = {
-      id: `r${Date.now()}`,
-      showId: show.id,
-      userId: 'u1',
-      userName: 'あなた',
-      postedAt: new Date().toISOString(),
-      date, rating, title: title.trim(), body: body.trim(), seat,
-      isFavorite: false,
-      castRatings: castRatings.filter(cr => cr.rating > 0 || cr.comment),
+  const handleSubmit = async () => {
+    if (!show || !canSubmit || submitting) return
+    setSubmitting(true)
+    try {
+      await addReview({
+        showId: show.id,
+        userId: '',        // useReviews 内で上書き
+        userName: 'あなた',
+        userInitial: 'あ',
+        userColor: '#00a07e',
+        date, rating, title: title.trim(), body: body.trim(), seat,
+        isFavorite: false,
+        likeCount: 0,
+        favoriteCastIds,
+      })
+      nav(`/shows/${show.id}`, { replace: true })
+    } catch (e) {
+      console.error(e)
+      setSubmitting(false)
     }
-    addReview(review)
-    nav(`/shows/${show.id}`, { replace: true })
+  }
+
+  if (!show) return null
+
+  if (!isLoggedIn) {
+    return (
+      <div className="space-y-5 pb-8">
+        <div className="flex items-center gap-2 pt-1">
+          <button onClick={() => nav(-1)} className="btn-ghost p-2 -ml-2">
+            <ArrowLeft size={20} />
+          </button>
+          <div>
+            <h2 className="font-black text-lg leading-tight text-gray-900">レビューを書く</h2>
+            <p className="text-xs text-shiki-accent">{show.title}</p>
+          </div>
+        </div>
+        <div className="card text-center py-12 space-y-3">
+          <LogIn size={32} className="mx-auto text-gray-300" />
+          <p className="font-bold text-gray-900">ログインが必要です</p>
+          <p className="text-sm text-gray-400 leading-relaxed">
+            レビューの投稿にはログインが必要です。<br />
+            マイページからログインしてください。
+          </p>
+          <button onClick={() => nav('/my')} className="btn-primary text-sm">マイページへ</button>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -113,38 +144,39 @@ export function ReviewFormPage() {
       </div>
 
       {casts.length > 0 && (
-        <div className="card space-y-4">
-          <h3 className="text-sm font-bold text-gray-700">キャスト別評価（任意）</h3>
-          {casts.map(cast => {
-            const role = cast.roles.find(r => r.showId === show.id)
-            const cr = castRatings.find(c => c.castId === cast.id)!
-            return (
-              <div key={cast.id} className="space-y-2 pb-4 border-b border-gray-100 last:border-0 last:pb-0">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-bold text-sm text-gray-900">{cast.name}</p>
-                    <p className="text-xs text-shiki-accent">{role?.roleName}</p>
-                  </div>
-                  <StarRating value={cr.rating} size={22} interactive
-                    onChange={v => updateCastRating(cast.id, 'rating', v)} />
-                </div>
-                <input value={cr.comment} onChange={e => updateCastRating(cast.id, 'comment', e.target.value)}
-                  placeholder="このキャストへのコメント（任意）"
-                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-sm text-gray-900
-                             placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-shiki-red/30 focus:border-shiki-red/50" />
-              </div>
-            )
-          })}
+        <div className="card space-y-3">
+          <h3 className="text-sm font-bold text-gray-700">お気に入りのキャスト（任意・複数選択可）</h3>
+          <div className="flex flex-wrap gap-2">
+            {casts.map(cast => {
+              const role = cast.roles.find(r => r.showId === show.id)
+              const selected = favoriteCastIds.includes(cast.id)
+              return (
+                <button
+                  key={cast.id}
+                  type="button"
+                  onClick={() => toggleFavoriteCast(cast.id)}
+                  className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm border transition-colors
+                    ${selected
+                      ? 'bg-rose-50 border-rose-200 text-rose-600'
+                      : 'bg-gray-50 border-gray-200 text-gray-600 hover:border-gray-300'}`}
+                >
+                  <Heart size={14} className={selected ? 'fill-rose-500 text-rose-500' : 'text-gray-300'} />
+                  <span className="font-bold">{cast.name}</span>
+                  {role?.roleName && <span className="text-xs opacity-70">（{role.roleName}）</span>}
+                </button>
+              )
+            })}
+          </div>
         </div>
       )}
 
-      <button onClick={handleSubmit} disabled={!canSubmit}
+      <button onClick={handleSubmit} disabled={!canSubmit || submitting}
         className={`w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl font-bold text-base transition-all
-          ${canSubmit
+          ${canSubmit && !submitting
             ? 'bg-shiki-red hover:bg-teal-700 text-white active:scale-95'
             : 'bg-gray-100 text-gray-400 cursor-not-allowed'}`}>
-        <Send size={18} />
-        レビューを投稿する
+        {submitting ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
+        {submitting ? '投稿中…' : 'レビューを投稿する'}
       </button>
     </div>
   )

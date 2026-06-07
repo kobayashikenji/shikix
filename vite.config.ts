@@ -3,6 +3,9 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  optimizeDeps: {
+    include: ['firebase/app', 'firebase/firestore', 'firebase/auth'],
+  },
   plugins: [
     react(),
     VitePWA({

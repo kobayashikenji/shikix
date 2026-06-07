@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { Flame, Star, TrendingUp, MessageSquare, ChevronRight } from 'lucide-react'
+import { Flame, TrendingUp, MessageSquare, ChevronRight } from 'lucide-react'
 import { SHOWS } from '../data/mock'
 import { useReviews } from '../hooks/useReviews'
 import { StarRating } from '../components/StarRating'
@@ -83,7 +83,7 @@ export function HotPage() {
           人気ランキング
         </h2>
         <div className="card divide-y divide-gray-100 p-0 overflow-hidden">
-          {ranking.map(({ show, reviewCount, avg, score }, i) => (
+          {ranking.map(({ show, reviewCount, avg }, i) => (
             <button
               key={show.id}
               onClick={() => nav(`/shows/${show.id}`)}

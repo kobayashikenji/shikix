@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import { ArrowLeft, MapPin, Train, ExternalLink, Hotel, ChevronRight, Coffee, Clock, Wifi, Zap } from 'lucide-react'
-import { THEATERS, SHOWS } from '../data/mock'
+import { ArrowLeft, MapPin, Train, ExternalLink, Hotel, ChevronRight, Coffee, Clock, Wifi, Zap, History } from 'lucide-react'
+import { THEATERS, SHOWS, RUNS } from '../data/mock'
+import { rakutenHotelUrl, jalanUrl } from '../config/affiliate'
 
 const HOTEL_SERVICES = [
   {
@@ -8,18 +9,14 @@ const HOTEL_SERVICES = [
     name: '楽天トラベル',
     domain: 'travel.rakuten.co.jp',
     color: '#BF0000',
-    getUrl: (area: string) =>
-      `https://travel.rakuten.co.jp/hotel/search/?f_cd=&f_keyword=${encodeURIComponent(area)}`
-      /* アフィリエイトパラメータ: &af=YOUR_RAKUTEN_AFFILIATE_ID */,
+    getUrl: rakutenHotelUrl,
   },
   {
     id: 'jalan',
     name: 'じゃらん',
     domain: 'jalan.net',
     color: '#FF6600',
-    getUrl: (area: string) =>
-      `https://www.jalan.net/yad/?keyword=${encodeURIComponent(area)}`
-      /* アフィリエイトパラメータ: &afid=YOUR_JALAN_AFFILIATE_ID */,
+    getUrl: jalanUrl,
   },
 ]
 
@@ -32,6 +29,13 @@ export function TheaterPage() {
 
   const shows = SHOWS.filter(s => s.theaterId === id)
   const runningShows = shows.filter(s => s.currentlyRunning)
+
+  // この劇場で過去に上演された公演（公演×劇場の多対多関係をRUNSから集計）
+  const pastRuns = RUNS
+    .filter(r => r.theaterId === id && r.periodEnd)
+    .map(r => ({ run: r, show: SHOWS.find(s => s.id === r.showId) }))
+    .filter((x): x is { run: typeof RUNS[number]; show: NonNullable<typeof x.show> } => !!x.show)
+    .sort((a, b) => b.run.periodStart.localeCompare(a.run.periodStart))
 
   return (
     <div className="space-y-5">
@@ -90,6 +94,35 @@ export function TheaterPage() {
                   <p className="text-xs text-gray-400">{show.titleEn}</p>
                 </div>
                 <span className="badge bg-green-50 text-green-700 flex-shrink-0">上演中</span>
+                <ChevronRight size={14} className="text-gray-300 flex-shrink-0" />
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* 過去にこの劇場で上演された公演 */}
+      {pastRuns.length > 0 && (
+        <section>
+          <h3 className="font-bold text-sm text-gray-700 mb-2 flex items-center gap-1.5">
+            <History size={14} className="text-gray-400" />
+            この劇場でのこれまでの上演
+          </h3>
+          <div className="space-y-2">
+            {pastRuns.map(({ run, show }) => (
+              <button key={run.id} onClick={() => nav(`/shows/${show.id}`)}
+                className="w-full card text-left flex items-center gap-3 hover:shadow-md transition-all active:scale-[0.99]">
+                <div className="w-10 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100" style={{ aspectRatio: '2/3' }}>
+                  <img src={show.image} alt={show.title} className="w-full h-full object-cover object-center" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-bold text-sm text-gray-900">{show.title}</p>
+                  <p className="text-xs text-gray-400">
+                    {run.periodStart} 〜 {run.periodEnd}
+                    {run.note && <span className="ml-1">（{run.note}）</span>}
+                  </p>
+                </div>
+                <span className="badge bg-gray-100 text-gray-500 flex-shrink-0">上演終了</span>
                 <ChevronRight size={14} className="text-gray-300 flex-shrink-0" />
               </button>
             ))}

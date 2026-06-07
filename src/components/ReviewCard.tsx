@@ -1,5 +1,6 @@
 import { Heart, CalendarDays, Armchair } from 'lucide-react'
 import { StarRating } from './StarRating'
+import { CASTS } from '../data/mock'
 import type { Review } from '../types'
 
 interface Props {
@@ -48,14 +49,19 @@ export function ReviewCard({ review, showTitle, onToggleFavorite }: Props) {
         )}
       </div>
 
-      {review.castRatings.length > 0 && (
-        <div className="pt-2 border-t border-gray-100 space-y-1.5">
-          {review.castRatings.map(cr => (
-            <div key={cr.castId} className="flex items-center gap-2 text-xs">
-              <StarRating value={cr.rating} size={11} />
-              <span className="text-gray-500 line-clamp-1">{cr.comment}</span>
-            </div>
-          ))}
+      {review.favoriteCastIds.length > 0 && (
+        <div className="pt-2 border-t border-gray-100 flex flex-wrap items-center gap-1.5">
+          <span className="text-xs text-gray-400">お気に入り:</span>
+          {review.favoriteCastIds.map(castId => {
+            const cast = CASTS.find(c => c.id === castId)
+            if (!cast) return null
+            return (
+              <span key={castId} className="flex items-center gap-1 bg-rose-50 text-rose-600 rounded-full px-2 py-0.5 text-xs">
+                <Heart size={10} className="fill-rose-500 text-rose-500" />
+                {cast.name}
+              </span>
+            )
+          })}
         </div>
       )}
     </div>
