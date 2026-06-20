@@ -40,24 +40,19 @@ export function useAuth() {
    */
   const signInWithGoogle = async () => {
     const current = auth.currentUser
-    let newUser: User | null = null
     try {
-      if (current?.isAnonymous) {
-        const result = await linkWithPopup(current, googleProvider)
-        newUser = result.user
-      } else {
-        const result = await signInWithPopup(auth, googleProvider)
-        newUser = result.user
-      }
+      const result = current?.isAnonymous
+        ? await linkWithPopup(current, googleProvider)
+        : await signInWithPopup(auth, googleProvider)
+      setUser({ ...result.user })
     } catch (err: unknown) {
       if (hasCode(err, 'auth/credential-already-in-use')) {
         const result = await signInWithPopup(auth, googleProvider)
-        newUser = result.user
+        setUser({ ...result.user })
       } else {
         throw err
       }
     }
-    if (newUser) setUser({ ...newUser })
   }
 
   /**
@@ -68,24 +63,19 @@ export function useAuth() {
   const emailSignUp = async (email: string, password: string) => {
     const current = auth.currentUser
     const credential = EmailAuthProvider.credential(email, password)
-    let newUser: User | null = null
     try {
-      if (current?.isAnonymous) {
-        const result = await linkWithCredential(current, credential)
-        newUser = result.user
-      } else {
-        const result = await createUserWithEmailAndPassword(auth, email, password)
-        newUser = result.user
-      }
+      const result = current?.isAnonymous
+        ? await linkWithCredential(current, credential)
+        : await createUserWithEmailAndPassword(auth, email, password)
+      setUser({ ...result.user })
     } catch (err: unknown) {
       if (hasCode(err, 'auth/email-already-in-use') || hasCode(err, 'auth/credential-already-in-use')) {
         const result = await signInWithEmailAndPassword(auth, email, password)
-        newUser = result.user
+        setUser({ ...result.user })
       } else {
         throw err
       }
     }
-    if (newUser) setUser({ ...newUser })
   }
 
   /**

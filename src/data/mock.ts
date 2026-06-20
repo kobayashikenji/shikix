@@ -79,7 +79,7 @@ export const SHOWS: Show[] = [
     genre: 'ミュージカル', theater: '四季劇場[秋]（東京）',
     imageEmoji: '🦁', image: '/images/lion-king.jpg', officialUrl: 'https://www.shiki.jp/applause/lionking/', theaterId: 'ariake-aki', workId: 'w-lion-king', heroBg: 'bg-hero-lion', accentColor: '#F59E0B',
     synopsis: 'アフリカの大地を舞台に、若き王子シンバの成長と王座奪還を描く壮大なミュージカル。世界中で愛されるディズニーの傑作。ティム・ライスとエルトン・ジョンによる名曲が彩る。',
-    castIds: ['c1','c2','c3','c4'], currentlyRunning: true, openDate: '2023-03-01',
+    castIds: ['c31','c2','c3','c4','c35'], currentlyRunning: true, openDate: '2023-03-01',
     songs: ['サークル・オブ・ライフ','ハクナ・マタタ','愛を感じて'],
   },
   {
@@ -87,7 +87,7 @@ export const SHOWS: Show[] = [
     genre: 'ミュージカル', theater: '電通四季劇場[海]（東京）',
     imageEmoji: '🧞', image: '/images/aladdin.jpg', officialUrl: 'https://www.shiki.jp/applause/aladdin/', theaterId: 'dentsu-umi', heroBg: 'bg-hero-aladdin', accentColor: '#8B5CF6',
     synopsis: 'アラビアンナイトの世界を舞台に、青年アラジンとジャスミン姫の冒険と恋を描く。豪華絢爛な舞台美術と魔法のランプが見どころ。ジーニーの圧倒的なパフォーマンスに注目。',
-    castIds: ['c5','c6','c7'], currentlyRunning: true, openDate: '2015-05-06',
+    castIds: ['c36','c37','c38'], currentlyRunning: true, openDate: '2015-05-06',
     songs: ['ア・ホール・ニュー・ワールド','フレンド・ライク・ミー','プリンス・アリ'],
   },
   {
@@ -95,7 +95,9 @@ export const SHOWS: Show[] = [
     genre: 'ミュージカル', theater: '四季劇場[春]（東京）',
     imageEmoji: '🐱', image: '/images/cats.jpg', officialUrl: 'https://www.shiki.jp/applause/cats/', theaterId: 'ariake-haru', workId: 'w-cats', heroBg: 'bg-hero-cats', accentColor: '#10B981',
     synopsis: 'T.S.エリオットの詩集をもとにした、猫たちの一夜の物語。「メモリー」など名曲ぞろいの不朽の名作。劇団四季の代表作として長年愛され続けている。',
-    castIds: ['c8','c9','c10'], currentlyRunning: true, openDate: '1983-11-10',
+    // 2026-06-20確認：公式サイトに「2027年2月、上演決定（2026年11月チケット発売予定）」とのみ記載があり、
+    // 現時点で上演中の公演はない（要再調査：劇場・開幕日・キャストは全て未検証）。
+    castIds: ['c8','c9','c10'], currentlyRunning: false, openDate: '1983-11-10',
     songs: ['メモリー','マキャヴィティ','ジェリクル・ソング'],
   },
   {
@@ -111,7 +113,9 @@ export const SHOWS: Show[] = [
     genre: 'ミュージカル', theater: '北海道四季劇場（札幌）',
     imageEmoji: '⛪', image: '/images/notre-dame.jpg', officialUrl: 'https://www.shiki.jp/applause/notredame/', theaterId: 'hokkaido', heroBg: 'bg-hero-notre', accentColor: '#3B82F6',
     synopsis: 'ヴィクトル・ユゴーの名作をもとに、パリのノートルダム大聖堂を舞台に繰り広げられる愛と差別・偏見との戦い。重厚な合唱と深いテーマが観る者の心を揺さぶる。',
-    castIds: ['c1','c13'], currentlyRunning: true, openDate: '2016-09-08',
+    // 2026-06-20確認：公式サイトでは大阪公演が「稽古が始まりました」（2026.06.12付）の段階で未開幕。
+    // 札幌ロングラン公演が現在も上演中であることを裏付ける情報は見つからなかった（要再調査：劇場・開幕日・キャストは全て未検証）。
+    castIds: ['c1','c13'], currentlyRunning: false, openDate: '2016-09-08',
     songs: ['ノートルダム大聖堂','神よ助けたまえ','聖なる場所'],
   },
   {
@@ -119,7 +123,7 @@ export const SHOWS: Show[] = [
     genre: 'ミュージカル', theater: 'キャナルシティ劇場（福岡）',
     imageEmoji: '🧜', image: '/images/mermaid.jpg', officialUrl: 'https://www.shiki.jp/applause/littlemermaid/', theaterId: 'canal-city', heroBg: 'bg-hero-mermaid', accentColor: '#06B6D4',
     synopsis: 'アンデルセンの人魚姫をもとにした、海の世界から陸の世界へ憧れる人魚アリエルの冒険と恋の物語。水中を表現した革新的な舞台技術に驚かされる。',
-    castIds: ['c6','c14'], currentlyRunning: true, openDate: '2013-07-12',
+    castIds: ['c14','c25','c26','c27','c28','c29','c30'], currentlyRunning: true, openDate: '2013-07-12',
     songs: ['パート・オブ・ユア・ワールド','アンダー・ザ・シー','キス・ザ・ガール'],
   },
 
@@ -250,28 +254,39 @@ export const RUNS: Run[] = [
 ]
 
 export const CASTS: Cast[] = [
+  // c1: notre-dame（札幌）のフロロー役は要再調査（公式サイトでは現在大阪公演の稽古中という記載のみで、
+  // 札幌ロングラン公演の在演を裏付ける情報が見つからなかったため、ライオンキング役のみ削除し保留）
   { id:'c1',  name:'芝 清道',      nameKana:'しば きよみち',          roles:[
-    {showId:'lion-king',   roleName:'ムファサ',         periodStart:'2023-03-01'},
     {showId:'notre-dame',  roleName:'フロロー',         periodStart:'2024-06-01', periodEnd:'2025-03-30'},
   ]},
-  { id:'c2',  name:'山口 祐一郎',  nameKana:'やまぐち ゆういちろう',  roles:[
-    {showId:'lion-king',   roleName:'スカー',           periodStart:'2022-09-01'},
+  // 出典: 劇団四季公式サイト「今週のキャスト情報」（2026/06/19更新）
+  // https://www.shiki.jp/applause/lionking/#cast （2026-06-20取得）
+  // ※劇団四季は配役が週替わりで変動するため、ここでの periodStart は取得時点のスナップショット。
+  { id:'c31', name:'内海 雅智',    nameKana:'うつみ まさとも',        roles:[
+    {showId:'lion-king',   roleName:'ムファサ',         periodStart:'2026-06-19'},
   ]},
-  { id:'c3',  name:'光川 愛',      nameKana:'みつかわ めぐみ',        roles:[
-    {showId:'lion-king',   roleName:'ナラ',             periodStart:'2024-01-15'},
+  { id:'c2',  name:'髙橋 基史',    nameKana:'たかはし もとふみ',      roles:[
+    {showId:'lion-king',   roleName:'スカー',           periodStart:'2026-06-19'},
   ]},
-  { id:'c4',  name:'下村 青',      nameKana:'しもむら あおい',        roles:[
-    {showId:'lion-king',   roleName:'ラフィキ',         periodStart:'2023-06-01'},
+  { id:'c3',  name:'中原 詩乃',    nameKana:'なかはら しの',          roles:[
+    {showId:'lion-king',   roleName:'ナラ',             periodStart:'2026-06-19'},
   ]},
-  { id:'c5',  name:'木村 達成',    nameKana:'きむら たつなり',        roles:[
-    {showId:'aladdin',     roleName:'アラジン',         periodStart:'2024-04-01'},
+  { id:'c4',  name:'遠藤 珠生',    nameKana:'えんどう たまき',        roles:[
+    {showId:'lion-king',   roleName:'ラフィキ',         periodStart:'2026-06-19'},
   ]},
-  { id:'c6',  name:'神田 恵介',    nameKana:'かんだ けいすけ',        roles:[
-    {showId:'aladdin',     roleName:'ジーニー',         periodStart:'2023-10-01'},
-    {showId:'mermaid',     roleName:'エリック王子',     periodStart:'2021-03-01', periodEnd:'2022-11-30'},
+  { id:'c35', name:'山下 啓太',    nameKana:'やました けいた',        roles:[
+    {showId:'lion-king',   roleName:'シンバ',           periodStart:'2026-06-19'},
   ]},
-  { id:'c7',  name:'山本 紗衣',    nameKana:'やまもと さえ',          roles:[
-    {showId:'aladdin',     roleName:'ジャスミン',       periodStart:'2024-07-01'},
+  // 出典: 劇団四季公式サイト「今週のキャスト情報」（2026/06/15更新）
+  // https://www.shiki.jp/applause/aladdin/#cast （2026-06-20取得）
+  { id:'c36', name:'一和 洋輔',    nameKana:'いちわ ようすけ',        roles:[
+    {showId:'aladdin',     roleName:'アラジン',         periodStart:'2026-06-15'},
+  ]},
+  { id:'c37', name:'瀧山 久志',    nameKana:'たきやま ひさし',        roles:[
+    {showId:'aladdin',     roleName:'ジーニー',         periodStart:'2026-06-15'},
+  ]},
+  { id:'c38', name:'平田 愛咲',    nameKana:'ひらた まなみ',          roles:[
+    {showId:'aladdin',     roleName:'ジャスミン',       periodStart:'2026-06-15'},
   ]},
   { id:'c8',  name:'谷口 あかり',  nameKana:'たにぐち あかり',        roles:[
     {showId:'cats',        roleName:'グリザベラ',       periodStart:'2022-04-01'},
@@ -291,8 +306,28 @@ export const CASTS: Cast[] = [
   { id:'c13', name:'飯田 達郎',    nameKana:'いいだ たつろう',        roles:[
     {showId:'notre-dame',  roleName:'カジモド',         periodStart:'2024-06-01', periodEnd:'2025-03-30'},
   ]},
-  { id:'c14', name:'田中 彩子',    nameKana:'たなか あやこ',          roles:[
-    {showId:'mermaid',     roleName:'アリエル',         periodStart:'2021-03-01', periodEnd:'2022-11-30'},
+  // 出典: 劇団四季公式サイト「出演候補キャスト」（リトルマーメイド舞浜公演 2026年8月26日開幕）
+  // https://www.shiki.jp/applause/littlemermaid/special/cast/ （2026-06-20取得）
+  { id:'c14', name:'谷原 志音',    nameKana:'たにはら しおん',        roles:[
+    {showId:'mermaid',     roleName:'アリエル',         periodStart:'2026-08-26'},
+  ]},
+  { id:'c25', name:'立花 梨奈',    nameKana:'たちばな りな',          roles:[
+    {showId:'mermaid',     roleName:'アリエル',         periodStart:'2026-08-26'},
+  ]},
+  { id:'c26', name:'武藤 洸次',    nameKana:'むとう こうじ',          roles:[
+    {showId:'mermaid',     roleName:'エリック王子',     periodStart:'2026-08-26'},
+  ]},
+  { id:'c27', name:'政所 和行',    nameKana:'まんどころ かずゆき',    roles:[
+    {showId:'mermaid',     roleName:'エリック王子',     periodStart:'2026-08-26'},
+  ]},
+  { id:'c28', name:'恒川 愛',      nameKana:'つねかわ あい',          roles:[
+    {showId:'mermaid',     roleName:'アースラ',         periodStart:'2026-08-26'},
+  ]},
+  { id:'c29', name:'金久 烈',      nameKana:'かねく れつ',            roles:[
+    {showId:'mermaid',     roleName:'トリトン',         periodStart:'2026-08-26'},
+  ]},
+  { id:'c30', name:'川口 雄二',    nameKana:'かわぐち ゆうじ',        roles:[
+    {showId:'mermaid',     roleName:'セバスチャン',     periodStart:'2026-08-26'},
   ]},
 
   // --- アーカイブ作品のキャスト ---
@@ -417,7 +452,9 @@ export function loadReviews(): Review[] {
   try {
     const s = localStorage.getItem(STORAGE_KEY)
     if (s) return JSON.parse(s)
-  } catch {}
+  } catch {
+    // JSON解析に失敗した場合は初期データにフォールバック
+  }
   return INITIAL_REVIEWS
 }
 
