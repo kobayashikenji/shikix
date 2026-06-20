@@ -1,0 +1,29 @@
+<svg viewBox="0 0 800 1200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-jesus-christ-superstar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a97ef3"/>
+      <stop offset="55%" stop-color="#5d2bb1"/>
+      <stop offset="100%" stop-color="#371a6a"/>
+    </linearGradient>
+    <radialGradient id="glow-jesus-christ-superstar" cx="50%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="1200" fill="url(#bg-jesus-christ-superstar)"/>
+  <rect width="800" height="1200" fill="url(#glow-jesus-christ-superstar)"/>
+  <g stroke="#ffffff" stroke-opacity="0.3" stroke-width="6">
+    <line x1="400" y1="160" x2="400" y2="700"/>
+    <line x1="180" y1="370" x2="620" y2="370"/>
+    <line x1="240" y1="240" x2="560" y2="500"/>
+    <line x1="560" y1="240" x2="240" y2="500"/>
+  </g>
+  <g fill="#ffffff" fill-opacity="0.9">
+    <rect x="365" y="280" width="70" height="420" rx="10"/>
+    <rect x="220" y="430" width="360" height="70" rx="10"/>
+  </g>
+
+  <rect x="0" y="1050" width="800" height="150" fill="#000000" opacity="0.22"/>
+  <text x="400.0" y="1135" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+        font-size="40" letter-spacing="3" fill="#ffffff" opacity="0.92">JESUS CHRIST SUPERSTAR</text>
+</svg>

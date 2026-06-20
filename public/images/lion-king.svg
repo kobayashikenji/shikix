@@ -1,0 +1,33 @@
+<svg viewBox="0 0 800 1200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-lion-king" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8bf60"/>
+      <stop offset="55%" stop-color="#b77608"/>
+      <stop offset="100%" stop-color="#6e4704"/>
+    </linearGradient>
+    <radialGradient id="glow-lion-king" cx="50%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="1200" fill="url(#bg-lion-king)"/>
+  <rect width="800" height="1200" fill="url(#glow-lion-king)"/>
+  <circle cx="400" cy="430" r="230" fill="none" stroke="#ffffff" stroke-opacity="0.5" stroke-width="6"/>
+  <circle cx="400" cy="430" r="180" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="5"/>
+  <circle cx="400" cy="430" r="130" fill="#ffffff" fill-opacity="0.22"/>
+  <circle cx="400" cy="430" r="80" fill="#ffffff" fill-opacity="0.4"/>
+  <g stroke="#ffffff" stroke-opacity="0.55" stroke-width="7" stroke-linecap="round">
+    <line x1="400" y1="160" x2="400" y2="80"/>
+    <line x1="589" y1="241" x2="649" y2="181"/>
+    <line x1="670" y1="430" x2="750" y2="430"/>
+    <line x1="589" y1="619" x2="649" y2="679"/>
+    <line x1="211" y1="619" x2="151" y2="679"/>
+    <line x1="130" y1="430" x2="50" y2="430"/>
+    <line x1="211" y1="241" x2="151" y2="181"/>
+  </g>
+  <path d="M 220 980 Q 400 880 580 980 L 580 1050 L 220 1050 Z" fill="#000000" fill-opacity="0.28"/>
+
+  <rect x="0" y="1050" width="800" height="150" fill="#000000" opacity="0.22"/>
+  <text x="400.0" y="1135" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+        font-size="40" letter-spacing="3" fill="#ffffff" opacity="0.92">THE LION KING</text>
+</svg>

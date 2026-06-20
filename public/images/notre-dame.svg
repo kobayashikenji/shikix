@@ -1,0 +1,32 @@
+<svg viewBox="0 0 800 1200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-notre-dame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7fadf9"/>
+      <stop offset="55%" stop-color="#2c61b8"/>
+      <stop offset="100%" stop-color="#1a3a6e"/>
+    </linearGradient>
+    <radialGradient id="glow-notre-dame" cx="50%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="1200" fill="url(#bg-notre-dame)"/>
+  <rect width="800" height="1200" fill="url(#glow-notre-dame)"/>
+  <g transform="translate(400,440)">
+    <circle r="220" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="8"/>
+    <circle r="150" fill="none" stroke="#ffffff" stroke-opacity="0.4" stroke-width="6"/>
+    <g stroke="#ffffff" stroke-opacity="0.5" stroke-width="6">
+      <line x1="0" y1="-220" x2="0" y2="220"/>
+      <line x1="-220" y1="0" x2="220" y2="0"/>
+      <line x1="-156" y1="-156" x2="156" y2="156"/>
+      <line x1="-156" y1="156" x2="156" y2="-156"/>
+    </g>
+    <circle r="46" fill="#ffffff" fill-opacity="0.6"/>
+  </g>
+  <path d="M 320 880 L 480 880 L 460 1000 Q 400 1040 340 1000 Z" fill="#000000" fill-opacity="0.3"/>
+  <rect x="392" y="840" width="16" height="40" fill="#000000" fill-opacity="0.3"/>
+
+  <rect x="0" y="1050" width="800" height="150" fill="#000000" opacity="0.22"/>
+  <text x="400.0" y="1135" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+        font-size="40" letter-spacing="3" fill="#ffffff" opacity="0.92">THE HUNCHBACK OF NOTRE DAME</text>
+</svg>

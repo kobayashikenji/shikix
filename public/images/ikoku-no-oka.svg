@@ -1,0 +1,26 @@
+<svg viewBox="0 0 800 1200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-ikoku-no-oka" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#87909d"/>
+      <stop offset="55%" stop-color="#353f4e"/>
+      <stop offset="100%" stop-color="#1f262f"/>
+    </linearGradient>
+    <radialGradient id="glow-ikoku-no-oka" cx="50%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="1200" fill="url(#bg-ikoku-no-oka)"/>
+  <rect width="800" height="1200" fill="url(#glow-ikoku-no-oka)"/>
+  <circle cx="580" cy="280" r="100" fill="#ffffff" fill-opacity="0.45"/>
+  <path d="M 0 760 Q 220 660 400 740 T 800 720 L 800 1200 L 0 1200 Z" fill="#000000" fill-opacity="0.22"/>
+  <path d="M 0 880 Q 250 820 500 880 T 800 860 L 800 1200 L 0 1200 Z" fill="#000000" fill-opacity="0.32"/>
+  <g stroke="#ffffff" stroke-opacity="0.6" stroke-width="5" fill="none" stroke-linecap="round">
+    <path d="M 180 360 q 20 -16 40 0 q 20 -16 40 0"/>
+    <path d="M 320 420 q 16 -13 32 0 q 16 -13 32 0"/>
+  </g>
+
+  <rect x="0" y="1050" width="800" height="150" fill="#000000" opacity="0.22"/>
+  <text x="400.0" y="1135" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+        font-size="40" letter-spacing="3" fill="#ffffff" opacity="0.92">IKOKU NO OKA</text>
+</svg>

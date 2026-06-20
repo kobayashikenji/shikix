@@ -77,7 +77,7 @@ export const SHOWS: Show[] = [
   {
     id: 'lion-king', title: 'ライオンキング', titleEn: 'THE LION KING',
     genre: 'ミュージカル', theater: '四季劇場[秋]（東京）',
-    imageEmoji: '🦁', image: '/images/lion-king.jpg', officialUrl: 'https://www.shiki.jp/applause/lionking/', theaterId: 'ariake-aki', workId: 'w-lion-king', heroBg: 'bg-hero-lion', accentColor: '#F59E0B',
+    imageEmoji: '🦁', image: '/images/lion-king.svg', officialUrl: 'https://www.shiki.jp/applause/lionking/', theaterId: 'ariake-aki', workId: 'w-lion-king', heroBg: 'bg-hero-lion', accentColor: '#F59E0B',
     synopsis: 'アフリカの大地を舞台に、若き王子シンバの成長と王座奪還を描く壮大なミュージカル。世界中で愛されるディズニーの傑作。ティム・ライスとエルトン・ジョンによる名曲が彩る。',
     castIds: ['c31','c2','c3','c4','c35'], currentlyRunning: true, openDate: '2023-03-01',
     songs: ['サークル・オブ・ライフ','ハクナ・マタタ','愛を感じて'],
@@ -85,7 +85,7 @@ export const SHOWS: Show[] = [
   {
     id: 'aladdin', title: 'アラジン', titleEn: 'ALADDIN',
     genre: 'ミュージカル', theater: '電通四季劇場[海]（東京）',
-    imageEmoji: '🧞', image: '/images/aladdin.jpg', officialUrl: 'https://www.shiki.jp/applause/aladdin/', theaterId: 'dentsu-umi', heroBg: 'bg-hero-aladdin', accentColor: '#8B5CF6',
+    imageEmoji: '🧞', image: '/images/aladdin.svg', officialUrl: 'https://www.shiki.jp/applause/aladdin/', theaterId: 'dentsu-umi', heroBg: 'bg-hero-aladdin', accentColor: '#8B5CF6',
     synopsis: 'アラビアンナイトの世界を舞台に、青年アラジンとジャスミン姫の冒険と恋を描く。豪華絢爛な舞台美術と魔法のランプが見どころ。ジーニーの圧倒的なパフォーマンスに注目。',
     castIds: ['c36','c37','c38'], currentlyRunning: true, openDate: '2015-05-06',
     songs: ['ア・ホール・ニュー・ワールド','フレンド・ライク・ミー','プリンス・アリ'],
@@ -93,7 +93,7 @@ export const SHOWS: Show[] = [
   {
     id: 'cats', title: 'キャッツ', titleEn: 'CATS',
     genre: 'ミュージカル', theater: '四季劇場[春]（東京）',
-    imageEmoji: '🐱', image: '/images/cats.jpg', officialUrl: 'https://www.shiki.jp/applause/cats/', theaterId: 'ariake-haru', workId: 'w-cats', heroBg: 'bg-hero-cats', accentColor: '#10B981',
+    imageEmoji: '🐱', image: '/images/cats.svg', officialUrl: 'https://www.shiki.jp/applause/cats/', theaterId: 'ariake-haru', workId: 'w-cats', heroBg: 'bg-hero-cats', accentColor: '#10B981',
     synopsis: 'T.S.エリオットの詩集をもとにした、猫たちの一夜の物語。「メモリー」など名曲ぞろいの不朽の名作。劇団四季の代表作として長年愛され続けている。',
     // 2026-06-20確認：公式サイトに「2027年2月、上演決定（2026年11月チケット発売予定）」とのみ記載があり、
     // 現時点で上演中の公演はない（要再調査：劇場・開幕日・キャストは全て未検証）。
@@ -103,7 +103,7 @@ export const SHOWS: Show[] = [
   {
     id: 'phantom', title: 'オペラ座の怪人', titleEn: 'THE PHANTOM OF THE OPERA',
     genre: 'ミュージカル', theater: '四季劇場[春]（東京）',
-    imageEmoji: '🎭', image: '/images/phantom.jpg', officialUrl: 'https://www.shiki.jp/applause/operaza/', theaterId: 'ariake-haru', workId: 'w-phantom', heroBg: 'bg-hero-phantom', accentColor: '#A78BFA',
+    imageEmoji: '🎭', image: '/images/phantom.svg', officialUrl: 'https://www.shiki.jp/applause/operaza/', theaterId: 'ariake-haru', workId: 'w-phantom', heroBg: 'bg-hero-phantom', accentColor: '#A78BFA',
     synopsis: 'パリのオペラ座に潜む謎の怪人ファントムと、歌姫クリスティーヌの哀しき愛の物語。壮大な舞台装置とアンドリュー・ロイド・ウェバーの美しい音楽が魅力。',
     castIds: ['c11','c12'], currentlyRunning: false, openDate: '1988-03-16',
     songs: ['オペラ座の怪人','ミュージック・オブ・ザ・ナイト','オール・アイ・アスク・オブ・ユー'],
@@ -111,7 +111,7 @@ export const SHOWS: Show[] = [
   {
     id: 'notre-dame', title: 'ノートルダムの鐘', titleEn: 'THE HUNCHBACK OF NOTRE DAME',
     genre: 'ミュージカル', theater: '北海道四季劇場（札幌）',
-    imageEmoji: '⛪', image: '/images/notre-dame.jpg', officialUrl: 'https://www.shiki.jp/applause/notredame/', theaterId: 'hokkaido', heroBg: 'bg-hero-notre', accentColor: '#3B82F6',
+    imageEmoji: '⛪', image: '/images/notre-dame.svg', officialUrl: 'https://www.shiki.jp/applause/notredame/', theaterId: 'hokkaido', heroBg: 'bg-hero-notre', accentColor: '#3B82F6',
     synopsis: 'ヴィクトル・ユゴーの名作をもとに、パリのノートルダム大聖堂を舞台に繰り広げられる愛と差別・偏見との戦い。重厚な合唱と深いテーマが観る者の心を揺さぶる。',
     // 2026-06-20確認：公式サイトでは大阪公演が「稽古が始まりました」（2026.06.12付）の段階で未開幕。
     // 札幌ロングラン公演が現在も上演中であることを裏付ける情報は見つからなかった（要再調査：劇場・開幕日・キャストは全て未検証）。
@@ -121,7 +121,7 @@ export const SHOWS: Show[] = [
   {
     id: 'mermaid', title: 'リトルマーメイド', titleEn: 'THE LITTLE MERMAID',
     genre: 'ミュージカル', theater: 'キャナルシティ劇場（福岡）',
-    imageEmoji: '🧜', image: '/images/mermaid.jpg', officialUrl: 'https://www.shiki.jp/applause/littlemermaid/', theaterId: 'canal-city', heroBg: 'bg-hero-mermaid', accentColor: '#06B6D4',
+    imageEmoji: '🧜', image: '/images/mermaid.svg', officialUrl: 'https://www.shiki.jp/applause/littlemermaid/', theaterId: 'canal-city', heroBg: 'bg-hero-mermaid', accentColor: '#06B6D4',
     synopsis: 'アンデルセンの人魚姫をもとにした、海の世界から陸の世界へ憧れる人魚アリエルの冒険と恋の物語。水中を表現した革新的な舞台技術に驚かされる。',
     castIds: ['c14','c25','c26','c27','c28','c29','c30'], currentlyRunning: true, openDate: '2013-07-12',
     songs: ['パート・オブ・ユア・ワールド','アンダー・ザ・シー','キス・ザ・ガール'],
@@ -131,7 +131,7 @@ export const SHOWS: Show[] = [
   {
     id: 'beauty-and-beast', title: '美女と野獣', titleEn: 'BEAUTY AND THE BEAST',
     genre: 'ミュージカル', theater: '電通四季劇場[海]（東京）',
-    imageEmoji: '🌹', image: '/images/beauty-and-beast.jpg', officialUrl: 'https://www.shiki.jp/applause/beautyandthebeast/', theaterId: 'dentsu-umi', heroBg: 'bg-hero-beauty', accentColor: '#D97706',
+    imageEmoji: '🌹', image: '/images/beauty-and-beast.svg', officialUrl: 'https://www.shiki.jp/applause/beautyandthebeast/', theaterId: 'dentsu-umi', heroBg: 'bg-hero-beauty', accentColor: '#D97706',
     synopsis: 'ディズニーの名作をミュージカル化。魔法で野獣の姿に変えられた王子と、心優しい娘ベルが織りなす愛の物語。豪華な衣装と美術、軽快な楽曲が魅力の不朽の名作。',
     castIds: ['c15','c16'], currentlyRunning: false, openDate: '2017-04-01', closeDate: '2018-09-30',
     songs: ['美女と野獣','ひとりぼっちの晩餐会','変わらぬ愛を'],
@@ -139,7 +139,7 @@ export const SHOWS: Show[] = [
   {
     id: 'west-side-story', title: 'ウェストサイド物語', titleEn: 'WEST SIDE STORY',
     genre: 'ミュージカル', theater: '四季劇場[秋]（東京）',
-    imageEmoji: '🌃', image: '/images/west-side-story.jpg', officialUrl: 'https://www.shiki.jp/applause/westsidestory/', theaterId: 'ariake-aki', heroBg: 'bg-hero-westside', accentColor: '#EF4444',
+    imageEmoji: '🌃', image: '/images/west-side-story.svg', officialUrl: 'https://www.shiki.jp/applause/westsidestory/', theaterId: 'ariake-aki', heroBg: 'bg-hero-westside', accentColor: '#EF4444',
     synopsis: 'シェイクスピアの「ロミオとジュリエット」を1950年代のニューヨークに置き換えた不朽の名作。対立する若者グループの中で芽生える悲劇の恋を描く。レナード・バーンスタインの音楽と情熱的なダンスが見どころ。',
     castIds: ['c17','c18'], currentlyRunning: false, openDate: '2019-07-12', closeDate: '2021-03-28',
     songs: ['トゥナイト','アメリカ','サムウェア'],
@@ -147,7 +147,7 @@ export const SHOWS: Show[] = [
   {
     id: 'evita', title: 'エビータ', titleEn: 'EVITA',
     genre: 'ミュージカル', theater: 'キャナルシティ劇場（福岡）',
-    imageEmoji: '🌹', image: '/images/evita.jpg', officialUrl: 'https://www.shiki.jp/applause/evita/', theaterId: 'canal-city', heroBg: 'bg-hero-evita', accentColor: '#F472B6',
+    imageEmoji: '🌹', image: '/images/evita.svg', officialUrl: 'https://www.shiki.jp/applause/evita/', theaterId: 'canal-city', heroBg: 'bg-hero-evita', accentColor: '#F472B6',
     synopsis: 'アルゼンチンのファーストレディ、エヴァ・ペロンの波乱に満ちた生涯を描いたミュージカル。「ドント・クライ・フォー・ミー・アルゼンチン」をはじめとする名曲とドラマチックな展開が見どころ。',
     castIds: ['c19'], currentlyRunning: false, openDate: '2014-02-08', closeDate: '2015-05-31',
     songs: ['ドント・クライ・フォー・ミー・アルゼンチン','闘うアルゼンチン','こんな日が来るとは'],
@@ -155,7 +155,7 @@ export const SHOWS: Show[] = [
   {
     id: 'jesus-christ-superstar', title: 'ジーザス・クライスト=スーパースター', titleEn: 'JESUS CHRIST SUPERSTAR',
     genre: 'ミュージカル', theater: '四季劇場[春]（東京）',
-    imageEmoji: '✝️', image: '/images/jesus-christ-superstar.jpg', officialUrl: 'https://www.shiki.jp/applause/jcs/', theaterId: 'ariake-haru', heroBg: 'bg-hero-jcs', accentColor: '#7C3AED',
+    imageEmoji: '✝️', image: '/images/jesus-christ-superstar.svg', officialUrl: 'https://www.shiki.jp/applause/jcs/', theaterId: 'ariake-haru', heroBg: 'bg-hero-jcs', accentColor: '#7C3AED',
     synopsis: 'イエス・キリストの最後の7日間を、ロックミュージカルとして描いた問題作にして傑作。アンドリュー・ロイド・ウェバーの劇的な楽曲と、人間ドラマとしての深いテーマが胸を打つ。',
     castIds: ['c20','c21'], currentlyRunning: false, openDate: '2020-01-17', closeDate: '2020-09-21',
     songs: ['ゲッセマネ','スーパースター','イエスを十字架に'],
@@ -163,7 +163,7 @@ export const SHOWS: Show[] = [
   {
     id: 'mamma-mia', title: 'マンマ・ミーア!', titleEn: 'MAMMA MIA!',
     genre: 'ミュージカル', theater: '電通四季劇場[海]（東京）',
-    imageEmoji: '☀️', image: '/images/mamma-mia.jpg', officialUrl: 'https://www.shiki.jp/applause/mammamia/', theaterId: 'dentsu-umi', workId: 'w-mamma-mia', heroBg: 'bg-hero-mamma', accentColor: '#0EA5E9',
+    imageEmoji: '☀️', image: '/images/mamma-mia.svg', officialUrl: 'https://www.shiki.jp/applause/mammamia/', theaterId: 'dentsu-umi', workId: 'w-mamma-mia', heroBg: 'bg-hero-mamma', accentColor: '#0EA5E9',
     synopsis: 'ABBAの名曲に乗せて描かれる、ギリシャの島を舞台にした母娘の物語。結婚式を控えた娘が3人の「父親候補」をひそかに式へ招待したことから始まる、笑いと感動のハッピーミュージカル。',
     castIds: ['c22','c23'], currentlyRunning: false, openDate: '2016-11-03', closeDate: '2018-02-25',
     songs: ['ダンシング・クイーン','マンマ・ミーア','ザ・ウィナー・テイクス・イット・オール'],
@@ -171,7 +171,7 @@ export const SHOWS: Show[] = [
   {
     id: 'ikoku-no-oka', title: '異国の丘', titleEn: 'IKOKU NO OKA',
     genre: 'ミュージカル', theater: '北海道四季劇場（札幌）',
-    imageEmoji: '🌄', image: '/images/ikoku-no-oka.jpg', officialUrl: 'https://www.shiki.jp/applause/ikokunooka/', theaterId: 'hokkaido', heroBg: 'bg-hero-ikoku', accentColor: '#475569',
+    imageEmoji: '🌄', image: '/images/ikoku-no-oka.svg', officialUrl: 'https://www.shiki.jp/applause/ikokunooka/', theaterId: 'hokkaido', heroBg: 'bg-hero-ikoku', accentColor: '#475569',
     synopsis: '戦争に翻弄されながらも希望を捨てずに生きた若者たちの姿を描く、劇団四季のオリジナルミュージカル。重厚な人間ドラマと、心に染み入る楽曲が深い余韻を残す。',
     castIds: ['c24'], currentlyRunning: false, openDate: '2012-08-01', closeDate: '2013-01-14',
     songs: ['異国の丘','故郷を想う','明日への讃歌'],

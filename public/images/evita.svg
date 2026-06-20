@@ -1,0 +1,32 @@
+<svg viewBox="0 0 800 1200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-evita" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7a3cf"/>
+      <stop offset="55%" stop-color="#b75588"/>
+      <stop offset="100%" stop-color="#6d3351"/>
+    </linearGradient>
+    <radialGradient id="glow-evita" cx="50%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="1200" fill="url(#bg-evita)"/>
+  <rect width="800" height="1200" fill="url(#glow-evita)"/>
+  <g stroke="#ffffff" stroke-opacity="0.35" stroke-width="10" stroke-linecap="round">
+    <line x1="400" y1="120" x2="400" y2="40"/>
+    <line x1="540" y1="170" x2="600" y2="110"/>
+    <line x1="630" y1="300" x2="710" y2="280"/>
+    <line x1="260" y1="170" x2="200" y2="110"/>
+    <line x1="170" y1="300" x2="90" y2="280"/>
+  </g>
+  <circle cx="400" cy="300" r="120" fill="#ffffff" fill-opacity="0.5"/>
+  <g transform="translate(400,780)">
+    <rect x="-10" y="-160" width="20" height="160" fill="#ffffff" fill-opacity="0.8"/>
+    <ellipse cx="0" cy="-180" rx="38" ry="50" fill="#ffffff" fill-opacity="0.85"/>
+    <rect x="-140" y="0" width="280" height="16" fill="#ffffff" fill-opacity="0.5"/>
+  </g>
+
+  <rect x="0" y="1050" width="800" height="150" fill="#000000" opacity="0.22"/>
+  <text x="400.0" y="1135" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+        font-size="40" letter-spacing="3" fill="#ffffff" opacity="0.92">EVITA</text>
+</svg>

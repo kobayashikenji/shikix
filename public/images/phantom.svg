@@ -1,0 +1,32 @@
+<svg viewBox="0 0 800 1200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-phantom" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c5b3fb"/>
+      <stop offset="55%" stop-color="#7d68bb"/>
+      <stop offset="100%" stop-color="#4b3e70"/>
+    </linearGradient>
+    <radialGradient id="glow-phantom" cx="50%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="1200" fill="url(#bg-phantom)"/>
+  <rect width="800" height="1200" fill="url(#glow-phantom)"/>
+  <g transform="translate(400,520)">
+    <path d="M -180 -40 C -180 -160 -90 -220 0 -220 C 90 -220 180 -160 180 -40
+             C 180 60 120 140 0 140 C -120 140 -180 60 -180 -40 Z"
+          fill="#ffffff" fill-opacity="0.88"/>
+    <ellipse cx="-80" cy="-50" rx="18" ry="26" fill="#1f2937"/>
+    <ellipse cx="80" cy="-50" rx="18" ry="26" fill="#1f2937" fill-opacity="0.35"/>
+    <path d="M -40 60 Q 0 90 40 60" stroke="#1f2937" stroke-width="6" fill="none" stroke-linecap="round" stroke-opacity="0.5"/>
+  </g>
+  <g transform="translate(400,860)" fill="#ffffff" fill-opacity="0.85">
+    <path d="M 0 0 C -40 -10 -55 -50 -30 -80 C -10 -100 25 -95 35 -65 C 55 -75 80 -55 70 -25
+             C 60 5 20 20 0 0 Z"/>
+    <rect x="-6" y="0" width="12" height="120" rx="5"/>
+  </g>
+
+  <rect x="0" y="1050" width="800" height="150" fill="#000000" opacity="0.22"/>
+  <text x="400.0" y="1135" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+        font-size="40" letter-spacing="3" fill="#ffffff" opacity="0.92">THE PHANTOM OF THE OPERA</text>
+</svg>
