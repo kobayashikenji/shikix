@@ -285,7 +285,7 @@ export const CASTS: Cast[] = [
   { id:'c37', name:'瀧山 久志',    nameKana:'たきやま ひさし',        roles:[
     {showId:'aladdin',     roleName:'ジーニー',         periodStart:'2026-06-15'},
   ]},
-  { id:'c38', name:'平田 愛咲',    nameKana:'ひらた まなみ',          roles:[
+  { id:'c38', name:'平田 愛咲',    nameKana:'ひらた あずさ',          roles:[
     {showId:'aladdin',     roleName:'ジャスミン',       periodStart:'2026-06-15'},
   ]},
   { id:'c8',  name:'谷口 あかり',  nameKana:'たにぐち あかり',        roles:[
