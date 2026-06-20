@@ -285,8 +285,13 @@ export const CASTS: Cast[] = [
   { id:'c37', name:'瀧山 久志',    nameKana:'たきやま ひさし',        roles:[
     {showId:'aladdin',     roleName:'ジーニー',         periodStart:'2026-06-15'},
   ]},
+  // 出典: 劇団四季公式サイト ニュースリリース（舞浜公演 2022年10月開幕・2026年3月15日千秋楽）
+  // https://www.shiki.jp/navi/news/renewinfo/036928.html 他 （2026-06-20取得）
+  // ベル役在演は複数メディアでも確認済み。公式キャスト個別ページは公演終了に伴い削除済みのため、
+  // 公式ニュースリリースの公演期間に基づき記載。
   { id:'c38', name:'平田 愛咲',    nameKana:'ひらた あずさ',          roles:[
-    {showId:'aladdin',     roleName:'ジャスミン',       periodStart:'2026-06-15'},
+    {showId:'beauty-and-beast', roleName:'ベル',       periodStart:'2022-11-02', periodEnd:'2026-03-15'},
+    {showId:'aladdin',          roleName:'ジャスミン', periodStart:'2026-06-15'},
   ]},
   { id:'c8',  name:'谷口 あかり',  nameKana:'たにぐち あかり',        roles:[
     {showId:'cats',        roleName:'グリザベラ',       periodStart:'2022-04-01'},

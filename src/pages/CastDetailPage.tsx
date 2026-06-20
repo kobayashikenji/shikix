@@ -2,14 +2,12 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { ArrowLeft, CalendarDays, Clock, Heart } from 'lucide-react'
 import { CASTS, SHOWS } from '../data/mock'
 import { useReviews } from '../hooks/useReviews'
+import { useFavoriteCasts } from '../hooks/useFavoriteCasts'
 import { ReviewCard } from '../components/ReviewCard'
 
 function formatPeriod(start: string, end?: string): string {
-  const fmt = (d: string) => {
-    const [y, m] = d.split('-')
-    return `${y}年${parseInt(m)}月`
-  }
-  return end ? `${fmt(start)} 〜 ${fmt(end)}` : `${fmt(start)} 〜 現在`
+  const year = (d: string) => d.split('-')[0]
+  return end ? `(${year(start)}-${year(end)})` : `(${year(start)}-)`
 }
 
 function isRecent(_start: string, end?: string): boolean {
@@ -23,9 +21,12 @@ export function CastDetailPage() {
   const { id } = useParams<{ id: string }>()
   const nav = useNavigate()
   const { reviews, toggleFavorite } = useReviews()
+  const { isFavoriteCast, toggleFavoriteCast } = useFavoriteCasts()
 
   const cast = CASTS.find(c => c.id === id)
   if (!cast) return <div className="text-center py-20 text-gray-400">キャストが見つかりません</div>
+
+  const isFav = isFavoriteCast(cast.id)
 
   const reviewsWithCast = reviews.filter(r => r.favoriteCastIds.includes(cast.id))
 
@@ -49,7 +50,7 @@ export function CastDetailPage() {
           <div className="w-16 h-16 flex items-center justify-center bg-gray-50 rounded-xl flex-shrink-0 border border-gray-100 text-4xl">
             🎭
           </div>
-          <div>
+          <div className="flex-1 min-w-0">
             <h2 className="text-xl font-black text-gray-900">{cast.name}</h2>
             <p className="text-sm text-gray-400">{cast.nameKana}</p>
             {reviewsWithCast.length > 0 && (
@@ -60,6 +61,17 @@ export function CastDetailPage() {
               </div>
             )}
           </div>
+          <button
+            onClick={() => toggleFavoriteCast(cast.id)}
+            aria-label={isFav ? 'お気に入り登録済み' : 'お気に入りに登録'}
+            className={`flex-shrink-0 flex flex-col items-center gap-1 rounded-xl px-3 py-2 border transition-colors
+              ${isFav
+                ? 'bg-rose-50 border-rose-200 text-rose-500'
+                : 'bg-gray-50 border-gray-200 text-gray-300 hover:border-gray-300'}`}
+          >
+            <Heart size={20} className={isFav ? 'fill-rose-500' : ''} />
+            <span className="text-[10px] font-bold">{isFav ? '登録済み' : 'お気に入り'}</span>
+          </button>
         </div>
       </div>
 
